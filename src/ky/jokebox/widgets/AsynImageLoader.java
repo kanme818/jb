@@ -28,7 +28,7 @@ public class AsynImageLoader {
 	/** The cache. */
 	private static Map<String, Bitmap> cache = new HashMap<String, Bitmap>();
 
-	/** The pool. */ 
+	/** The pool. */
 	public static ExecutorService pool = Executors.newFixedThreadPool(3);
 
 	/**
