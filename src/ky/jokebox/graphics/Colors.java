@@ -438,4 +438,23 @@ public class Colors {
 	/** 黄色. */
 	public static final int yellow = 0xFFFFFF00;
 
+	/**
+	 * 调整透明度.
+	 * 
+	 * @param color
+	 *            颜色
+	 * @param rate
+	 *            0-255
+	 * @return the int
+	 */
+	public static int transparent(int color, int rate) {
+		if (rate > 255) {
+			rate = 255;
+		} else if (rate < 0) {
+			rate = 0;
+		}
+		int result = (color & 0xFFFFFF) | (rate << 24);
+		return result;
+	}
+
 }
