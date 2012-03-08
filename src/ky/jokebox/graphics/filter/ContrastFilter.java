@@ -13,11 +13,11 @@ import android.graphics.Paint;
 
 // TODO: Auto-generated Javadoc
 /**
- * The Class ContrastFilter.
+ * 对比度滤镜.
  */
 public class ContrastFilter extends BaseFilter {
 
-	/** The rate. */
+	/** 对比度. */
 	private float rate;
 
 	/**
