@@ -29,4 +29,10 @@
         android:layout_height="wrap_content"
         android:text="Button" />
 
+    <ky.jokebox.widgets.VerticalTextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Joke Box zan zan zan!" >
+    </ky.jokebox.widgets.VerticalTextView>
+
 </LinearLayout>
