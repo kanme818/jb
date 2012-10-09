@@ -1,16 +1,14 @@
 package ky.jokebox;
 
-import ky.jokebox.common.GPSUtil;
-import ky.jokebox.widgets.GifView;
+import ky.jokebox.activity.GifViewActivity;
 import android.app.Activity;
 import android.content.Context;
-import android.location.Location;
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
-import android.view.View.OnClickListener;
+import android.widget.ArrayAdapter;
 import android.widget.Button;
-import android.widget.LinearLayout;
-import android.widget.Toast;
+import android.widget.Spinner;
 
 // TODO: Auto-generated Javadoc
 /**
@@ -18,6 +16,9 @@ import android.widget.Toast;
  */
 public class JokeBoxActivity extends Activity {
 	private final Context context = JokeBoxActivity.this;
+
+	private Spinner demoList;
+	private Button showDemo;
 
 	/*
 	 * (non-Javadoc)
@@ -28,25 +29,33 @@ public class JokeBoxActivity extends Activity {
 	public void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.main);
-		LinearLayout ll = (LinearLayout) findViewById(R.id.linear1);
-		GifView gv1 = new GifView(this, R.drawable.g1);
-		ll.addView(gv1);
+		demoList = (Spinner) findViewById(R.id.spinner1);
+		showDemo = (Button) findViewById(R.id.button1);
+		ArrayAdapter<String> adapter = new ArrayAdapter<String>(context,
+				android.R.layout.simple_spinner_item, context.getResources()
+						.getStringArray(R.array.demo_list));
 
-		Button getGPS = (Button) findViewById(R.id.getGPS);
-		getGPS.setOnClickListener(new OnClickListener() {
+		demoList.setAdapter(adapter);
+		showDemo.setOnClickListener(new View.OnClickListener() {
+			public void onClick(View view) {
+				Class<?> clazz = null;
+				switch (demoList.getSelectedItemPosition()) {
+				case 0:
+					clazz = GifViewActivity.class;
+					break;
 
-			@Override
-			public void onClick(View v) {
-				Location location = GPSUtil.getCurrentLocation(context);
-				if (location == null) {
-					Toast.makeText(context, "无法获取定位信息", 5000).show();
-					return;
+				case 1:
+
+					break;
+
+				default:
+					break;
 				}
-				Toast.makeText(
-						context,
-						"GPS获取坐标:" + location.getLatitude() + ","
-								+ location.getLongitude(), 5000).show();
+				if (clazz != null) {
+					startActivity(new Intent(context, clazz));
+				}
 			}
 		});
 	}
+
 }
