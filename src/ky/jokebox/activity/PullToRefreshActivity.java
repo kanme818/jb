@@ -4,8 +4,8 @@ import java.util.ArrayList;
 import java.util.List;
 
 import ky.jokebox.R;
+import ky.jokebox.pulltorefresh.OnRefreshListener;
 import ky.jokebox.pulltorefresh.PullToRefreshListView;
-import ky.jokebox.pulltorefresh.PullToRefreshListView.OnRefreshListener;
 import android.app.Activity;
 import android.os.AsyncTask;
 import android.os.Bundle;
@@ -20,6 +20,9 @@ import android.widget.TextView;
 public class PullToRefreshActivity extends Activity {
 	private List<String> data;
 	private BaseAdapter adapter;
+	private PullToRefreshListView listView;
+	private RefreshDataAsynTask mRefreshAsynTask;
+	private int index;
 
 	/*
 	 * (non-Javadoc)
@@ -30,13 +33,8 @@ public class PullToRefreshActivity extends Activity {
 	public void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.pull2refresh_main);
-
-		data = new ArrayList<String>();
-		data.add("a");
-		data.add("b");
-		data.add("c");
-
-		final PullToRefreshListView listView = (PullToRefreshListView) findViewById(R.id.listView);
+		init();
+		listView = (PullToRefreshListView) findViewById(R.id.listView);
 		adapter = new BaseAdapter() {
 			public View getView(int position, View convertView, ViewGroup parent) {
 				TextView tv = new TextView(getApplicationContext());
@@ -60,26 +58,42 @@ public class PullToRefreshActivity extends Activity {
 
 		listView.setonRefreshListener(new OnRefreshListener() {
 			public void onRefresh() {
-				new AsyncTask<Void, Void, Void>() {
-					protected Void doInBackground(Void... params) {
-						try {
-							Thread.sleep(1000);
-						} catch (Exception e) {
-							e.printStackTrace();
-						}
-						data.add("刷新后添加的内容");
-						return null;
-					}
-
-					@Override
-					protected void onPostExecute(Void result) {
-						adapter.notifyDataSetChanged();
-						listView.onRefreshComplete();
-					}
-
-				}.execute(null);
+				mRefreshAsynTask = new RefreshDataAsynTask();
+				mRefreshAsynTask.execute(null, null, null);
 			}
 		});
+
+	}
+
+	private void init() {
+		data = new ArrayList<String>();
+		for (int i = 0; i < 30; i++) {
+			data.add("item " + i);
+		}
+	}
+
+	private class RefreshDataAsynTask extends AsyncTask<Void, Void, Void> {
+
+		@Override
+		protected Void doInBackground(Void... arg0) {
+
+			try {
+				Thread.sleep(10000);
+			} catch (InterruptedException e) {
+				e.printStackTrace();
+			}
+
+			index++;
+			data.add("genius" + index);
+
+			return null;
+		}
+
+		@Override
+		protected void onPostExecute(Void result) {
+			adapter.notifyDataSetChanged();
+			listView.onRefreshComplete();
+		}
 
 	}
 }
