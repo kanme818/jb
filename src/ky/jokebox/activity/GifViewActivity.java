@@ -6,6 +6,9 @@ import android.app.Activity;
 import android.os.Bundle;
 import android.widget.LinearLayout;
 
+/**
+ * Gif 图片显示.
+ */
 public class GifViewActivity extends Activity {
 	/*
 	 * (non-Javadoc)

@@ -1,6 +1,7 @@
 package ky.jokebox;
 
 import ky.jokebox.activity.GifViewActivity;
+import ky.jokebox.activity.PullToRefreshActivity;
 import android.app.Activity;
 import android.content.Context;
 import android.content.Intent;
@@ -45,7 +46,7 @@ public class JokeBoxActivity extends Activity {
 					break;
 
 				case 1:
-
+					clazz = PullToRefreshActivity.class;
 					break;
 
 				default:
