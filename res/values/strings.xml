@@ -3,6 +3,7 @@
 
     <string name="hello">Hello World, JokeBoxActivity!</string>
     <string name="app_name">JokeBox</string>
+    <string name="select">select</string>
 
     <color name="white_100">#ffffffff</color>
     <color name="black_100">#ff000000</color>
