@@ -3,7 +3,7 @@
     <string-array name="demo_list">
         <item >GIF</item>
         <item >下拉更新ListView</item>
-        <item >异步请求</item>
+        <item >瀑布流</item>
     </string-array>
     
 </resources>

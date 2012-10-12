@@ -26,6 +26,10 @@
         </activity>
         <activity android:name=".activity.PullToRefreshActivity" >
         </activity>
+        <activity android:name=".activity.WaterFallActivity" >
+        </activity>
+        <activity android:name=".waterfall.WaterFallDetailActivity" >
+        </activity>
     </application>
 
 </manifest>

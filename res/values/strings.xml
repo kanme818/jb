@@ -8,4 +8,8 @@
 
     <!-- for pull to refresh -->
 
+
+    <!-- for water fall -->
+    <string name="item_thumb_desc">item thumb</string>
+
 </resources>

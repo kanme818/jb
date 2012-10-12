@@ -423,6 +423,12 @@
 
     <!-- 白色. -->
     <color name="white_100">#FFFFFFFF</color>
+    
+    <!-- 白色50%. -->
+    <color name="white_50">#80FFFFFF</color>
+    
+    <!-- 白色75%. -->
+    <color name="white_75">#BFFFFFFF</color>
 
     <!-- 烟白色. -->
     <color name="whitesmoke_100">#FFF5F5F5</color>

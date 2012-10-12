@@ -2,6 +2,7 @@ package ky.jokebox;
 
 import ky.jokebox.activity.GifViewActivity;
 import ky.jokebox.activity.PullToRefreshActivity;
+import ky.jokebox.activity.WaterFallActivity;
 import android.app.Activity;
 import android.content.Context;
 import android.content.Intent;
@@ -47,6 +48,10 @@ public class JokeBoxActivity extends Activity {
 
 				case 1:
 					clazz = PullToRefreshActivity.class;
+					break;
+					
+				case 2:
+					clazz = WaterFallActivity.class;
 					break;
 
 				default:
